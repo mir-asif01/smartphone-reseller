@@ -4,6 +4,7 @@ import Main from './layout/Main';
 import Blog from './pages/Blog/Blog';
 import Home from './pages/home/Home'
 import Phones from './pages/home/Product/Phones';
+import Error from './pages/error/Error';
 const routes = createBrowserRouter([
   {
     path : '/',
@@ -24,6 +25,10 @@ const routes = createBrowserRouter([
           return fetch(`http://localhost:5000/phones/${category}`)
         },
         element : <Phones></Phones>
+      },
+      {
+        path : '*',
+        element : <Error></Error>
       }
     ]
   }

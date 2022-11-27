@@ -2,7 +2,7 @@ import React from 'react';
 
 const HotSale = () => {
     return (
-        <div className='my-10 text-center'>
+        <div className='my-10 text-center p-5'>
             <h1 className='text-rose-600 font-semibold text-3xl mb-2'>Hot Sale!</h1>
             <div className="grid grid-flow-col gap-5 text-center auto-cols-max justify-center">
                 <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
