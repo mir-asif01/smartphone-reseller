@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Advertise = () => {
+
+    const [advertisements,setAdvertise] = useState([])
+
     return (
         <div>
-            <h1>This is advertise section</h1>
+            {
+                advertisements.length > 0 && <>
+                    <h1>This is advertise section</h1>
+                </>
+            }
         </div>
     );
 };
