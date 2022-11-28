@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PhoneCard = ({ phone }) => {
+const PhoneCard = ({ phone , setOrder}) => {
 
     const { _id, name, category, img, resale_price, seller_name, years_of_use, price, post_time,location } = phone
 
@@ -19,8 +19,8 @@ const PhoneCard = ({ phone }) => {
                     <p>Location : {location}</p>
                 </div>
                 <p>Posted On {post_time}</p>
-                <div className='text-center'>
-                    <button className="btn btn-primary my-2 ">Book Now </button>
+                <div className='text-center mt-4'>
+                <label onClick={()=>setOrder(phone)} htmlFor="my-modal-3" className="py-2 px-5 cursor-pointer bg-gradient-to-r from bg-cyan-400 to-cyan-600 rounded-md text-white">Book Now</label>
                 </div>
             </div>
         </div>
