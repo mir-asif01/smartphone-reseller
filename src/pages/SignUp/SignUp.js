@@ -26,6 +26,7 @@ const SignUp = () => {
             toast.success('Login With Google Success')
             console.log(user)
         })
+        .catch(err=>console.log(err))
     }
 
     return (

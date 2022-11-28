@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-
+import { toast, ToastContainer } from 'react-toastify';
+import { AuthContext } from '../../Auth/AuthProvider';
 const Login = () => {
 
+    const {googleLogin} = useContext(AuthContext)
+
+    const handleGoogleLogin =()=>{
+        googleLogin()
+        .then(result=>{
+            const user = result.user;
+            toast.success('Login With Google Success')
+            console.log(user)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
 
     return (
         <div className="hero">
@@ -26,6 +40,7 @@ const Login = () => {
                         </div>
                         <p className='text-center'>New Customer?? <Link to='/signup'>Sign Up</Link></p>
                     </form>
+                    <button onClick={handleGoogleLogin} className="btn btn-accent">Log In With Google</button>
                 </div>
             </div>
         </div>
