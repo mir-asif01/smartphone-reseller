@@ -5,7 +5,7 @@ import { AuthContext } from '../../Auth/AuthProvider';
 
 const SignUp = () => {
 
-    const {googleLogin} = useContext(AuthContext)
+    const {googleLogin,createUser,upadateUserName} = useContext(AuthContext)
 
     const handleSignBtn = (e) =>{
         e.preventDefault()
@@ -15,6 +15,33 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         const userRole = form.role.value
+
+        createUser(email,password)
+        .then(result=>{
+            const user = result.user;
+            upadateUserName(name)
+            .then(()=>{})
+            .catch(err=>console.log(err))
+            toast.success('User Created Successfully')
+            console.log(user)
+            form.reset()
+        })
+        .catch(err=>console.log(err))
+
+        const userForDb = {
+            email,
+            name,
+            userRole
+        }
+
+        fetch('http://localhost:5000/users',{
+            method : "POST",
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body : JSON.stringify(userForDb)
+        }).then(res=>res.json)
+        .then(()=>{})
 
         console.log(name,email,password,userRole)
     }
@@ -38,19 +65,19 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" name='name' placeholder="name" className="input input-bordered" />
+                            <input type="text" name='name' required placeholder="name" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="text" name='email' placeholder="email" className="input input-bordered" />
+                            <input type="email" name='email' required placeholder="email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="text" name='password' placeholder="password" className="input input-bordered" />
+                            <input type="password" name='password' required placeholder="password" className="input input-bordered" />
                         </div>
                         <div>
                             <h1>Please Select Your Role. Otherwise It will be buyer by Default.</h1>
@@ -68,7 +95,7 @@ const SignUp = () => {
                     {/* <button className='py-2 px-5 bg-blue-500 rounded-lg text-white font-semibold'>Log In With Google</button> */}
                     </div>
             </div>
-            <ToastContainer></ToastContainer>
+            <ToastContainer autoClose={500}></ToastContainer>
         </div>
     );
 };

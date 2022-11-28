@@ -1,15 +1,24 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../Auth/AuthProvider';
 
 const Navbar = () => {
 
-    const {user} = useContext(AuthContext)
+    const {user,signOutHandler} = useContext(AuthContext)
+
+    const handleLogOut = ()=>{
+        signOutHandler()
+        .then(()=> toast.success('Log Out Successfull'))
+    }
 
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        {
+            user?.uid ?  <li><button onClick={handleLogOut}>Logout</button></li> : <li><Link to='/login'>Login</Link></li>
+        }
+        {/* <li><Link to='/login'>Login</Link></li> */}
     </>
 
     return (
@@ -32,6 +41,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
+            <ToastContainer autoClose={500}></ToastContainer>
         </div>
     );
 };

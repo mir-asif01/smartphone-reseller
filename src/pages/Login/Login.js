@@ -43,6 +43,7 @@ const Login = () => {
                     <button onClick={handleGoogleLogin} className="btn btn-accent">Log In With Google</button>
                 </div>
             </div>
+            <ToastContainer autoClose={500}></ToastContainer>
         </div>
     );
 };
