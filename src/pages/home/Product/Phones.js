@@ -14,7 +14,7 @@ const Phones = () => {
                 phones.map(phone=><PhoneCard key={phone._id} phone={phone} setOrder={setOrder}></PhoneCard>)
             }
             {
-                <BookNowModal order={order}></BookNowModal>
+                order && <BookNowModal order={order} setOrder={setOrder}></BookNowModal>
             }
         </div>
     );

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../../Auth/AuthProvider';
 
-const BookNowModal = ({order}) => {
+const BookNowModal = ({order,setOrder}) => {
     const {user} = useContext(AuthContext)
     const { _id, name, category, img, resale_price, seller_name, years_of_use, price, post_time,location } = order
 
@@ -31,6 +31,9 @@ const BookNowModal = ({order}) => {
                 'content-type' : 'application/json'
             },
             body : JSON.stringify(order)
+        }).then(res=>res.json())
+        .then(()=>{
+            setOrder(null)
         })
 
         console.log(email,userName,itemName,itemPrice,location,phone)

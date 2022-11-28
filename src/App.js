@@ -9,6 +9,7 @@ import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Dashboard from './pages/dashboard/Dashboard';
 
 const routes = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const routes = createBrowserRouter([
         element : <Error></Error>
       }
     ]
+  },
+  {
+    path : '/dashboard',
+    element : <Dashboard></Dashboard>
   }
 ])
 
