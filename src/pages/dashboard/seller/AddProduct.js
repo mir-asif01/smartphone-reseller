@@ -1,11 +1,12 @@
 import React from 'react';
 import Navbar from '../../shared/Navbar';
+import { Link } from 'react-router-dom';
 
 const AddProduct = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <h1>This is Seller Route</h1>
+            <h1>add product</h1>
         </div>
     );
 };

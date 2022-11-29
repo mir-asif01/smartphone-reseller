@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../Auth/AuthProvider';
 
 const SignUp = () => {
 
+    const navigate = useNavigate()
     const {googleLogin,createUser,upadateUserName} = useContext(AuthContext)
 
     const handleSignBtn = (e) =>{
@@ -22,6 +23,7 @@ const SignUp = () => {
             upadateUserName(name)
             .then(()=>{})
             .catch(err=>console.log(err))
+            navigate('/')
             toast.success('User Created Successfully')
             form.reset()
         })
@@ -62,7 +64,7 @@ const SignUp = () => {
             body : JSON.stringify(userForDb)
             }).then(res=>res.json)
             .then(()=>{})
-
+            navigate('/')
             toast.success('Login With Google Success')
         })
         .catch(err=>console.log(err))

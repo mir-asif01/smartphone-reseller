@@ -53,25 +53,23 @@ const routes = createBrowserRouter([
   {
     path : '/dashboard',
     element : <Dashboard></Dashboard>,
-    children : [
-      {
-        path : '/allbuyers',
-        element : <AllBuyers></AllBuyers>
-      },
-      {
-        path : '/allsellers',
-        element : <AllSeller></AllSeller>
-      },
-      {
-        path : '/addproduct',
-        element : <AddProduct></AddProduct>
-      },
-      {
-        path : '/myproducts',
-        element : <MyProducts></MyProducts>
-      }
-    ]
   },
+  {
+    path : '/allbuyers',
+    element : <AllBuyers></AllBuyers>
+  },
+  {
+    path : '/allsellers',
+    element : <AllSeller></AllSeller>
+  },
+  {
+    path : '/addproduct',
+    element : <AddProduct></AddProduct>
+  },
+  {
+    path : '/myproducts',
+    element : <MyProducts></MyProducts>
+  }
 ])
 
 function App() {

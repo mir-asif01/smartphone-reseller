@@ -34,7 +34,7 @@ const MyOrders = () => {
                                 <td><img className='w-10' src={order.img} alt="" /></td>
                                 <td>{order.itemName}</td>
                                 <td>${order.itemPrice}</td>
-                                <td><button>Pay</button></td>
+                                <td><button className='py-2 px-5 bg-green-600 rounded-md text-white font-semibold'>Pay</button></td>
                             </tr>)
                         }
                     </tbody>
