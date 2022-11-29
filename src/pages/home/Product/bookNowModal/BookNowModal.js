@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../../../Auth/AuthProvider';
 
 const BookNowModal = ({order,setOrder}) => {
@@ -17,6 +18,7 @@ const BookNowModal = ({order,setOrder}) => {
         const phone = form.phone.value
 
         const order = {
+            img,
             email,
             userName,
             itemName,
@@ -33,6 +35,7 @@ const BookNowModal = ({order,setOrder}) => {
             body : JSON.stringify(order)
         }).then(res=>res.json())
         .then(()=>{
+            toast.success('Order Booked Successfully')
             setOrder(null)
         })
 
@@ -60,6 +63,7 @@ const BookNowModal = ({order,setOrder}) => {
                 </div>
             </div>
         </>
+        <ToastContainer autoClose={500}></ToastContainer>
         </div>
     );
 };
