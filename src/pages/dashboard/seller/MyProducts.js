@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../../Auth/AuthProvider';
 
 const MyProducts = () => {
 
     const { user } = useContext(AuthContext)
     const userEmail = user?.email;
-
+    const navigate = useNavigate()
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -15,7 +16,42 @@ const MyProducts = () => {
             .then(data => setProducts(data))
     }, [userEmail])
 
-    console.log(products)
+    const handleProductDelete=(id)=>{
+
+        const remainingProducts = products.filter(pd=>pd._id !== id)
+        setProducts(remainingProducts)
+
+        fetch(`http://localhost:5000/products/${id}`,{
+            method : "DELETE"
+        })
+        .then((res)=>res.json())
+        .then(()=>{
+            toast.success('Product Delted Successfully')
+        })
+
+    }
+
+    const handleAdvertise =(product)=>{
+
+        const advertisement = {
+            img : product.img,
+            name : product.name,
+            resale_price : product.resale_price,
+            time : new Date().getTime()
+        }
+
+        fetch(`http://localhost:5000/advertisements`,{
+            method : "POST",
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body : JSON.stringify(advertisement)
+        }).then(res=>res.json())
+        .then(()=>{
+            navigate('/')
+            toast.success('Advertise Added')
+        })
+    }
 
     return (
         <div className='p-3'>
@@ -42,13 +78,14 @@ const MyProducts = () => {
                                 <td>{pd.name}</td>
                                 <td>{pd.resale_price}</td>
                                 <td>unsold</td>
-                                <td><button className='bg-rose-600 py-2 px-5 rounded-md text-white'>Delete</button></td>
-                                <td><button className='bg-cyan-500 py-2 px-5 rounded-md text-white'>Advertise</button></td>
+                                <td><button onClick={()=>handleProductDelete(pd._id)} className='bg-rose-600 py-2 px-5 rounded-md text-white'>Delete</button></td>
+                                <td><button onClick={()=>handleAdvertise(pd)} className='bg-cyan-500 py-2 px-5 rounded-md text-white'>Advertise</button></td>
                             </tr>)
                         }
                     </tbody>
                 </table>
             </div>
+            <ToastContainer autoClose={500}></ToastContainer>
         </div>
     );
 };

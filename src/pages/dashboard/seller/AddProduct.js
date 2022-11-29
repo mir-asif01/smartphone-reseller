@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Navbar from '../../shared/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Auth/AuthProvider';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const AddProduct = () => {
 
@@ -111,6 +111,7 @@ const AddProduct = () => {
                     </div>
                 </div>
             </div>
+        <ToastContainer autoClose={500}></ToastContainer>
         </div>
     );
 };

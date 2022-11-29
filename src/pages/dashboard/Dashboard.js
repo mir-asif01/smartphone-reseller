@@ -15,7 +15,7 @@ const Dashboard = () => {
         fetch(`http://localhost:5000/users?email=${userEmail}`)
             .then(res => res.json())
             .then(data => setUserFromDb(data))
-    }, [])
+    }, [userEmail])
 
     // console.log(userFromDb)
 
