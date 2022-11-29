@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Auth/AuthProvider';
 
 const MyProducts = () => {
@@ -19,6 +20,7 @@ const MyProducts = () => {
     return (
         <div className='p-3'>
             <h1 className='text-rose-800 font-semibold'>You have added {products.length} products</h1>
+            <h1 className='text-right underline text-blue-400'><Link to='/dashboard'>Go To Dashboard</Link></h1>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

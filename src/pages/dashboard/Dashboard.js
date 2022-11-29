@@ -30,9 +30,8 @@ const Dashboard = () => {
     if (userFromDb?.userRole === 'seller') {
         return <div>
             <Navbar></Navbar>
-            <div className='text-center fonr-semibold'>
-                <Link className='mx-2 text-2xl' to='/myproducts'>My Products</Link>
-                <Link className='mx-2 text-2xl' to='/addproduct'>Add Product</Link>
+            <div className='text-right fonr-semibold'>
+                <Link className='mx-2 text-2xl py-2 px-5 bg-green-500 rounded-md text-white' to='/addproduct'>Add Product</Link>
             </div>
             <MyProducts></MyProducts>
         </div>
