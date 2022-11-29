@@ -14,6 +14,7 @@ import AllBuyers from './pages/dashboard/admin/AllBuyers';
 import AllSeller from './pages/dashboard/admin/AllSeller';
 import AddProduct from './pages/dashboard/seller/AddProduct';
 import MyProducts from './pages/dashboard/seller/MyProducts';
+import PrivateRoute from './Auth/PrivateRoute';
 
 const routes = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ const routes = createBrowserRouter([
           const category = params.category
           return fetch(`http://localhost:5000/phones/${category}`)
         },
-        element : <Phones></Phones>
+        element : <PrivateRoute><Phones></Phones></PrivateRoute>
       },
       {
         path : '/login',
