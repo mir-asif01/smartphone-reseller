@@ -20,7 +20,6 @@ const AuthProvider = ({ children }) => {
     const createUser = (email,password)=>{
         return createUserWithEmailAndPassword(auth,email,password)
     }
-
     const upadateUserName =(name)=>{
         return updateProfile(auth.currentUser,{
             displayName : name
@@ -30,6 +29,8 @@ const AuthProvider = ({ children }) => {
     const loginWithWEmailPass=(email,password)=>{
         return signInWithEmailAndPassword(auth,email,password)
     }
+
+   
 
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth,currentUser =>{

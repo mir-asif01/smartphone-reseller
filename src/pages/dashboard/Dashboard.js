@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../Auth/AuthProvider';
 import Navbar from '../shared/Navbar';
+import AllBuyers from './admin/AllBuyers';
 import MyOrders from './buyer/MyOrders';
 import MyProducts from './seller/MyProducts';
 
@@ -38,11 +39,8 @@ const Dashboard = () => {
     }
     if(userFromDb?.userRole === 'admin'){
         return <div>
-            <Navbar></Navbar>
-            <div>
-                <Link to='/allbuyers'>All Buyers</Link>
                 <Link to='/allsellers'>All Sellers</Link>
-            </div>
+            <AllBuyers></AllBuyers>
             
         </div>
     }

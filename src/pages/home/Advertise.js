@@ -10,15 +10,15 @@ const Advertise = () => {
     }, [])
 
     return (
-        <div>
-            <h1 className='text-center'>Ads.....</h1>
+        <div className='my-10'>
+            <h1 className='text-center text-rose-500'>Advertisements</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-10 items-center justify-center'>
                 {
                     advertisements.length > 0 && <>
                         {
                             advertisements.map(ad => <div key={ad._id}>
                                 <img className='w-full' src={ad.img} alt="" />
-                                <div className='flex items-center justify-between mx-14'>
+                                <div className='flex items-center justify-between md:mx-14'>
                                     <button className='py-2 px-5 text-center bg-green-500 text-white rounded-md'>Buy This</button>
                                     <p className='text-4xl'>Price ${ad.resale_price}</p>
                                 </div>
