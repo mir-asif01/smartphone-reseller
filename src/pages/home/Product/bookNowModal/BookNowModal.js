@@ -38,8 +38,6 @@ const BookNowModal = ({order,setOrder}) => {
             toast.success('Order Booked Successfully')
             setOrder(null)
         })
-
-        console.log(email,userName,itemName,itemPrice,location,phone)
     }
 
     return (

@@ -15,6 +15,7 @@ const Login = () => {
             toast.success('Login With Google Success')
         })
         .catch(err=>{
+            toast.error(`${err.message}`)
             console.log(err)
         })
     }
@@ -32,7 +33,7 @@ const Login = () => {
             toast.success('Login Sccessfull')
             form.reset()
         })
-        .catch(err=>console.log(err))
+        .catch(err=>toast.error(`${err.message}`))
 
     }
 

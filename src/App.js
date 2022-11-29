@@ -70,6 +70,10 @@ const routes = createBrowserRouter([
   {
     path : '/myproducts',
     element : <MyProducts></MyProducts>
+  },
+  {
+    path : '*',
+    element : <Error></Error>
   }
 ])
 

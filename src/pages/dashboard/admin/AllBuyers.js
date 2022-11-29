@@ -30,8 +30,8 @@ const AllBuyers = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className='flex justify-between items-center md:mx-28'>
-            <h1 className='text-3xl mb-3 font-semibold text-rose-500'>This is AllBuyersl</h1>
+            <div className='flex justify-between items-center mx-3 md:mx-28'>
+            <h1 className='text-3xl mb-3 font-semibold text-rose-500'>All Buyers</h1>
             <Link className='py-2 px-5 bg-green-500 rounded-md text-white mb-3' to='/allsellers'>All Sellers</Link>
             </div>
             <div className="overflow-x-auto">

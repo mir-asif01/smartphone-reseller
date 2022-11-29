@@ -6,21 +6,21 @@ import { AuthContext } from '../../Auth/AuthProvider';
 const Navbar = () => {
 
     const navigate = useNavigate()
-    const {user,signOutHandler} = useContext(AuthContext)
+    const { user, signOutHandler } = useContext(AuthContext)
 
-    const handleLogOut = ()=>{
+    const handleLogOut = () => {
         signOutHandler()
-        .then(()=> {
-            navigate('/')
-            toast.success('Log Out Successfull')
-        })
+            .then(() => {
+                navigate('/')
+                toast.success('Log Out Successfull')
+            })
     }
 
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
         {
-            user?.uid ?  <>
+            user?.uid ? <>
                 <li><Link to='/dashboard'>Dashboard</Link></li>
                 <li><button onClick={handleLogOut}>Logout</button></li>
             </> : <li><Link to='/login'>Login</Link></li>
@@ -37,14 +37,17 @@ const Navbar = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        {menuItems}
+                            {menuItems}
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost normal-case text-xl">Mobile Bazar</Link>
+                    <div className='flex justify-end'>
+                        <Link to='/' className="btn btn-ghost normal-case text-3xl"><img src="https://mobilesbazar.files.wordpress.com/2018/02/cropped-mb-logo.jpg" className='w-8 rounded-full md:mx-2' alt="" />
+                            <span className='hidden md:block'>Mobile Bazar</span></Link>
+                    </div>
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
-                       {menuItems}
+                        {menuItems}
                     </ul>
                 </div>
             </div>
