@@ -1,15 +1,17 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../Auth/AuthProvider';
 const Login = () => {
 
+    const navigate = useNavigate()
     const {googleLogin,loginWithWEmailPass} = useContext(AuthContext)
 
     const handleGoogleLogin =()=>{
         googleLogin()
         .then(result=>{
             const user = result.user;
+            navigate('/')
             toast.success('Login With Google Success')
         })
         .catch(err=>{
@@ -26,6 +28,7 @@ const Login = () => {
 
         loginWithWEmailPass(email,password)
         .then(()=> {
+            navigate('/')
             toast.success('Login Sccessfull')
             form.reset()
         })

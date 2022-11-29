@@ -10,6 +10,10 @@ import SignUp from './pages/SignUp/SignUp';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Dashboard from './pages/dashboard/Dashboard';
+import AllBuyers from './pages/dashboard/admin/AllBuyers';
+import AllSeller from './pages/dashboard/admin/AllSeller';
+import AddProduct from './pages/dashboard/seller/AddProduct';
+import MyProducts from './pages/dashboard/seller/MyProducts';
 
 const routes = createBrowserRouter([
   {
@@ -48,8 +52,26 @@ const routes = createBrowserRouter([
   },
   {
     path : '/dashboard',
-    element : <Dashboard></Dashboard>
-  }
+    element : <Dashboard></Dashboard>,
+    children : [
+      {
+        path : '/allbuyers',
+        element : <AllBuyers></AllBuyers>
+      },
+      {
+        path : '/allsellers',
+        element : <AllSeller></AllSeller>
+      },
+      {
+        path : '/addproduct',
+        element : <AddProduct></AddProduct>
+      },
+      {
+        path : '/myproducts',
+        element : <MyProducts></MyProducts>
+      }
+    ]
+  },
 ])
 
 function App() {

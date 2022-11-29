@@ -7,17 +7,11 @@ const MyOrders = () => {
     const userEmail = user?.email;
     const [orders, setOrders] = useState([]);
 
-    // fetch(`http://localhost:5000/orders?email=${userEmail}`)
-    //     .then(res => res.json())
-    //     .then(data => setOrders(data))
-
     useEffect(() => {
         fetch(`http://localhost:5000/orders?email=${userEmail}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [userEmail])
-
-    console.log(orders)
 
     return (
         <div className='p-5'>
