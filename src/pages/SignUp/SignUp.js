@@ -23,7 +23,6 @@ const SignUp = () => {
             .then(()=>{})
             .catch(err=>console.log(err))
             toast.success('User Created Successfully')
-            console.log(user)
             form.reset()
         })
         .catch(err=>console.log(err))
@@ -43,15 +42,28 @@ const SignUp = () => {
         }).then(res=>res.json)
         .then(()=>{})
 
-        console.log(name,email,password,userRole)
     }
 
     const handleGoogleLogin =()=>{
         googleLogin()
         .then(result=>{
             const user = result.user;
+            const userForDb = {
+                email : user?.email,
+                name : user?.displayName,
+                userRole : 'buyer'
+            }
+            
+            fetch('http://localhost:5000/users',{
+            method : "POST",
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body : JSON.stringify(userForDb)
+            }).then(res=>res.json)
+            .then(()=>{})
+
             toast.success('Login With Google Success')
-            console.log(user)
         })
         .catch(err=>console.log(err))
     }

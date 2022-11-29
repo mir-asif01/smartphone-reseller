@@ -11,7 +11,6 @@ const Login = () => {
         .then(result=>{
             const user = result.user;
             toast.success('Login With Google Success')
-            console.log(user)
         })
         .catch(err=>{
             console.log(err)

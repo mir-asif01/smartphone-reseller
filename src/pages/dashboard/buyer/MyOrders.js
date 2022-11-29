@@ -43,13 +43,6 @@ const MyOrders = () => {
                                 <td><button>Pay</button></td>
                             </tr>)
                         }
-                        {/* <tr>
-                            <th>1</th>
-                            <td><img className='w-10' src="https://www.mobiledokan.co/wp-content/uploads/2021/05/Nokia-C30-White.jpg" alt="" /></td>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                        </tr> */}
                     </tbody>
                 </table>
             </div>
