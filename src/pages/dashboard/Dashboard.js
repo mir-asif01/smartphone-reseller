@@ -39,7 +39,6 @@ const Dashboard = () => {
     }
     if(userFromDb?.userRole === 'admin'){
         return <div>
-                <Link to='/allsellers'>All Sellers</Link>
             <AllBuyers></AllBuyers>
             
         </div>

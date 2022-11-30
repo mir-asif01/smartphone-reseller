@@ -7,7 +7,7 @@ import Spinner from '../../shared/Spinner';
 
 const AllBuyers = () => {
 
-    const {loader,setLoader} = useContext(AuthContext)
+    const {deleteUserFromFB,loader,setLoader} = useContext(AuthContext)
     const [allUser, setAllUser] = useState([]);
     const navigate = useNavigate()
     useEffect(()=>{
@@ -29,6 +29,12 @@ const AllBuyers = () => {
             navigate('/allbuyers')
             toast.success('Seller Deleted');
         })
+
+        deleteUserFromFB()
+        .then(()=>{
+
+        })
+        .catch(err=>toast.error(`${err.message}`))
     }
 
     if(loader){

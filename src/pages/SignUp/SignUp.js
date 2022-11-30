@@ -27,7 +27,7 @@ const SignUp = () => {
             toast.success('User Created Successfully')
             form.reset()
         })
-        .catch(err=>console.log(err))
+        .catch(err=>toast.error(`${err.message}`))
 
         const userForDb = {
             email,

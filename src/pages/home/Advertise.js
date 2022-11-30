@@ -11,10 +11,10 @@ const Advertise = () => {
 
     return (
         <div className='my-10'>
-            <h1 className='text-center text-rose-500'>Advertisements</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-10 items-center justify-center'>
                 {
                     advertisements.length > 0 && <>
+                    <h1 className='text-center text-rose-500'>Advertisements</h1>
                         {
                             advertisements.map(ad => <div key={ad._id}>
                                 <img className='w-full' src={ad.img} alt="" />
