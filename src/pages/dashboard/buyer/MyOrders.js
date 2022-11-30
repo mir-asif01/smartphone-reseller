@@ -8,7 +8,7 @@ const MyOrders = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${userEmail}`)
+        fetch(`https://smartphone-reseller-server.vercel.app/orders?email=${userEmail}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [userEmail])

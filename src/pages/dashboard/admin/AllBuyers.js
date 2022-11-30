@@ -11,7 +11,7 @@ const AllBuyers = () => {
     const [allUser, setAllUser] = useState([]);
     const navigate = useNavigate()
     useEffect(()=>{
-        fetch(`http://localhost:5000/users`)
+        fetch(`https://smartphone-reseller-server.vercel.app/users`)
         .then(res=>res.json())
         .then(data=>setAllUser(data))
     },[{}])
@@ -21,7 +21,7 @@ const AllBuyers = () => {
     // console.log(allUser)
 
     const handleDelete = (id) =>{
-        fetch(`http://localhost:5000/users/${id}`,{
+        fetch(`https://smartphone-reseller-server.vercel.app/users/${id}`,{
             method : "DELETE"
         })
         .then(res=>res.json())

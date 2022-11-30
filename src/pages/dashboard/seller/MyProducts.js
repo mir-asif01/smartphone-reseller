@@ -11,7 +11,7 @@ const MyProducts = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products?email=${userEmail}`)
+        fetch(`https://smartphone-reseller-server.vercel.app/products?email=${userEmail}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [userEmail])
@@ -21,7 +21,7 @@ const MyProducts = () => {
         const remainingProducts = products.filter(pd=>pd._id !== id)
         setProducts(remainingProducts)
 
-        fetch(`http://localhost:5000/products/${id}`,{
+        fetch(`https://smartphone-reseller-server.vercel.app/products/${id}`,{
             method : "DELETE"
         })
         .then((res)=>res.json())
@@ -40,7 +40,7 @@ const MyProducts = () => {
             time : new Date().getTime()
         }
 
-        fetch(`http://localhost:5000/advertisements`,{
+        fetch(`https://smartphone-reseller-server.vercel.app/advertisements`,{
             method : "POST",
             headers : {
                 'content-type' : 'application/json'
