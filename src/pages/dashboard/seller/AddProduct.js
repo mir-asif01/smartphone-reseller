@@ -22,6 +22,7 @@ const AddProduct = () => {
         const post_time = form.post_time.value;
         const seller_name = form.seller_name.value;
         const seller_email = form.seller_email.value;
+        const years_of_use = form.years_of_use.value;
         const condition = form.condition.value;
 
         const product = {
@@ -34,6 +35,7 @@ const AddProduct = () => {
             post_time,
             seller_name,
             seller_email,
+            years_of_use,
             condition
         }
 
@@ -46,12 +48,10 @@ const AddProduct = () => {
         })
         .then(res=>res.json())
         .then(()=>{
-            navigate('/myproducts')
             toast.success('New Product Added')
+            navigate('/myproducts')
             form.reset()
         })
-
-        console.log(product)
 
     }
 

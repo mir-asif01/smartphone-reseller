@@ -8,12 +8,14 @@ const AuthProvider = ({ children }) => {
     const auth = getAuth(app)
     const googleProvider = new GoogleAuthProvider()
     const [user, setUser] = useState({})
+    const [loader,setLoader] = useState(false)
 
     const googleLogin = () => {
         return signInWithPopup(auth, googleProvider)
     }
 
     const signOutHandler =()=>{
+        setLoader(true)
         return signOut(auth)
     }
 
@@ -27,6 +29,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const loginWithWEmailPass=(email,password)=>{
+        setLoader(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
 
@@ -40,7 +43,7 @@ const AuthProvider = ({ children }) => {
             unsubscribe()
         }
     },[])
-    const authInfo = { user, googleLogin , signOutHandler ,createUser,upadateUserName,loginWithWEmailPass}
+    const authInfo = { user, googleLogin , signOutHandler ,createUser,upadateUserName,loginWithWEmailPass,loader,setLoader}
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

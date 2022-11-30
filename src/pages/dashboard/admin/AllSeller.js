@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import { AuthContext } from '../../../Auth/AuthProvider';
 import Navbar from '../../shared/Navbar';
+import Spinner from '../../shared/Spinner';
 
 const AllSeller = () => {
+    const {loader,setLoader} = useContext(AuthContext)
 
     const [allUser, setAllUser] = useState([]);
     const navigate = useNavigate()
@@ -14,7 +17,7 @@ const AllSeller = () => {
     }, [{}])
 
     const seller = allUser.filter(us => us?.userRole !== 'buyer')
-
+    setLoader(false)
     const handleDelete = (id) => {
         fetch(`http://localhost:5000/users/${id}`, {
             method: "DELETE"
@@ -24,6 +27,10 @@ const AllSeller = () => {
                 navigate('/allbuyers')
                 toast.success('Seller Deleted');
             })
+    }
+
+    if(loader){
+        return <Spinner></Spinner>
     }
 
     return (

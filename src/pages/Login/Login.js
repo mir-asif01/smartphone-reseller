@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../Auth/AuthProvider';
+import Spinner from '../shared/Spinner';
 const Login = () => {
 
     const navigate = useNavigate()
-    const {googleLogin,loginWithWEmailPass} = useContext(AuthContext)
+    const {googleLogin,loginWithWEmailPass,loader} = useContext(AuthContext)
 
     const handleGoogleLogin =()=>{
         googleLogin()

@@ -2,9 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import Navbar from '../../shared/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import { AuthContext } from '../../../Auth/AuthProvider';
+import Spinner from '../../shared/Spinner';
 
 const AllBuyers = () => {
 
+    const {loader,setLoader} = useContext(AuthContext)
     const [allUser, setAllUser] = useState([]);
     const navigate = useNavigate()
     useEffect(()=>{
@@ -14,6 +17,7 @@ const AllBuyers = () => {
     },[{}])
     
     const buyer = allUser.filter(us => us?.userRole !== 'seller')
+    setLoader(false)
     // console.log(allUser)
 
     const handleDelete = (id) =>{
@@ -25,6 +29,10 @@ const AllBuyers = () => {
             navigate('/allbuyers')
             toast.success('Seller Deleted');
         })
+    }
+
+    if(loader){
+        return <Spinner></Spinner>
     }
 
     return (
